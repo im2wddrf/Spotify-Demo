@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
-// import RenderAlbums from './RenderAlbums';
+import RenderHeader from './RenderHeader';
+import RenderPlaylist from './RenderPlaylist';
 
 // instantiate the class of spotify
 const spotifyWebApi = new Spotify();
@@ -13,12 +14,7 @@ class App extends Component {
     this.state = {
       loggedIn: params.access_token ? true : false,
       access_token: params.access_token,
-      nowPlaying: {
-        name: 'Not Checked',
-        image: ''
-      },
-      playlist_data: [],
-      content: []
+      playlist_data: []
     }
 
     if (params.access_token) {
@@ -39,36 +35,8 @@ class App extends Component {
       });
   }
 
-  renderLogIn() {
-    if (!this.state.loggedIn) {
-      return (
-        <button className="ui positive button">
-          <i className="sign in alternate icon"></i>
-          Log in to spotify
-        </button>
-      );
-    } else {
-      return (
-        <div>You are logged in!</div>
-      );
-    }
-  }
-
-  renderHeader() {
-    if (!this.state.loggedIn) {
-      return (
-        <div className="ui dividing block red header">
-          <h1>Oops! You need to log in!</h1>
-        </div>
-      );
-    } else {
-      return (
-        <div className="ui dividing block blue header">
-          <h1>Here are my playlists!</h1>
-        </div>
-      );
-    }
-  }
+  
+  
 
   getHashParams() {
     var hashParams = {};
@@ -83,37 +51,13 @@ class App extends Component {
   
 
   render() {
-    
     return (
       <div className="ui container">
-        <div className="ui container raised segment">
-          <a href="http://localhost:8888">
-              { this.renderLogIn() }
-              
-              { this.state.loggedIn }
-          </a>
-        </div>
-
-        <div className="ui container raised segment">  
-          {this.renderHeader()}
-          <div className="ui relaxed divided items">
-            {
-              this.state.playlist_data.map(playlist => {
-                return <div className="item" key={ playlist.id }>
-                  <img className="ui tiny image" src={playlist.images[0].url} alt={ playlist.name }></img>
-                  <div className="content">
-                    <div className="header">
-                      <a href={ playlist.external_urls.spotify }>{playlist.name}</a>
-                    </div>
-                    <div className="description">Number of tracks: {playlist.tracks.total}</div>
-                  </div>
-                </div>;
-              })
-            }
-          </div>
-        </div>
         
+        <RenderHeader loggedIn={this.state.loggedIn} playlist_data={this.state.playlist_data} />
 
+        <RenderPlaylist loggedIn={this.state.loggedIn} playlist_data={this.state.playlist_data} />
+        
       </div>
     )
   }
