@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 var keys = require('./keys');
 
 var client_id = keys.CLIENT_ID; // Your client id
-var client_secret = keys.CLIENT_SECRET; // Your secret
+var client_secret = keys.CLIENT_SECRET; // Your secret key
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 /**
