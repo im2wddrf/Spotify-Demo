@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import static_image from './jangofett.jpg';     // this image will be a place holder for playlists that have no image returned 
 
 const RenderPlaylist = (props) => {
     
@@ -12,7 +13,7 @@ const RenderPlaylist = (props) => {
         } else {
           return (
             <div className="ui dividing block blue header">
-              <h1>Here are my playlists!</h1>
+              <h1>Here are my Playlists!</h1>
             </div>
           );
         }
@@ -27,7 +28,7 @@ const RenderPlaylist = (props) => {
                     {
                         props.playlist_data.map(playlist => {
                             return <div className="item" key={ playlist.id }>
-                            <img className="ui tiny image" src={playlist.images[0].url} alt={ playlist.name }></img>
+                            <img className="ui tiny image" src={playlist.images.length === 0 ? static_image : playlist.images[0].url} alt={ playlist.name }></img>
                             <div className="content">
                                 <div className="header">
                                 <a href={ playlist.external_urls.spotify }>{playlist.name}</a>
