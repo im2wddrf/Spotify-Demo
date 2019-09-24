@@ -59,7 +59,6 @@ class App extends Component {
 
   changeSelection = (event) => {
     this.setState({ selection: event.currentTarget.value });
-    console.log(event.currentTarget.value);
   }
 
   
