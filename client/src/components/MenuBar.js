@@ -28,9 +28,9 @@ const MenuBar = (props) => {
           <div className="ui inverted secondary pointing menu">
             
             
-            <button className="item" value="playlists" onClick={ props.changeSelection }>My Playlists</button>
-            <button className="item" value="artists" onClick={ props.changeSelection }>My Artists</button>
-            <button className="item" value="albums" onClick={ props.changeSelection }>My Albums</button>
+            <button className="ui inverted blue button" value="playlists" onClick={ props.changeSelection } style={{cursor: 'pointer'}}>My Playlists</button>
+            <button className="ui inverted violet button" value="artists" onClick={ props.changeSelection } style={{cursor: 'pointer'}}>My Artists</button>
+            <button className="ui inverted purple button" value="albums" onClick={ props.changeSelection } style={{cursor: 'pointer'}}>My Albums</button>
 
             <div className="right menu">
               {/* this will be the login button */}
